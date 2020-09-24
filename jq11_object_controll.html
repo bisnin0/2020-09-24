@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<style>
+	img{
+		width:100px;
+		height:100px;
+	}
+	ul, li{
+		margin:10px;
+		list-style-type:none;
+		border:1px solid gray;
+		float:left;
+		padding:5px;
+	}
+</style>
+<script>
+	$(function(){
+		
+		// before() : 선택자 이전에 객체 추가
+		$("#img").before("<li><img src='../img/K6.jpg'/></li>");
+		
+		//insertBefore() : 선택자 이전에 추가 -> 내용이 먼저 오고 insertBefore() 선택자.
+		$("<li>insertBefore()</li>").insertBefore("#img");
+		
+		
+		// after() : 선택자 다음에 객체 추가
+		$("#img").after("<li><img src='../img/k1.jpg'/></li>");
+		// insertAfter() : 선택자 다음에 객체 추가 -> 내용이 먼저오고 insertAfter() 선택자. 
+		$("<li>insertAfter</li>").insertAfter("#img");
+		
+		// append(), appendTo(), html()... html()은 기존 내용 삭제하고 들어감.  append()는 선택자 안쪽에 제일 뒤에 들어간다.
+		// prepend() : 선택자의 하위 제일 앞에 추가  ->append의 반대
+		$("ul").prepend("<li><img src='../img/3.png'/></li>"); //ul의 하위 제일 앞
+		
+		// pependTo() : 선택자 하위의 제일 앞에 객체 추가 .. 선택자가 오른쪽에
+		$("<li>prependTo</li>").prependTo("ul");
+	});
+</script>
+
+</head>
+<body>
+<ul>
+	<li id="img"><img src="../img/2.png"/></li>
+</ul>
+</body>
+</html>

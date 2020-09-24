@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클래스 조작 객체</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<style>
+	.c1{
+		border:3px solid red;
+		width:200px;
+		height:100px;	
+	}
+	.c2{
+		border:3px dotted blue;
+		width:200px;
+		height:100px;
+	}
+	.c3{
+		border:3px dashed green;
+		width:200px;
+		height:100px;
+	}
+	.c4{
+		border:3px double lightblue;
+		width:200px;
+		height:100px; 
+	}
+	
+</style>
+<script>
+	$(function(){
+		// addClass() -> 태그에 class추가	
+		$('img').addClass('c1');
+		$('input[type="text"]').addClass('c2');
+//		$("img").addClass('c4'); //한번에 클래스 3개이상 넣으니까 적용 안된다. 2개까지라서 주석처리
+		
+		// removeClass() -> 태그에 있는 class 지우기
+		$("#username").removeClass('c2');
+		
+		// 이미지의 짝수번째에는 c2 클래스를 추가, 홀수번째는 c3 클래스를 추가
+/*		
+		$("img:even").addClass("c3");  //0,1,2,3,4 .. 0부터 잡히니까 짝수인데 홀수가잡힌다. 그래서 반대로 해야함. 우리가 보는 입장에선 홀수가 짝수고 짝수가 홀수다.
+		$("img:odd").addClass("c2");
+*/
+		$('img:nth-child(2n)').addClass('c2'); //짝수 1,2,3,4,5..
+//		$('img:nth-child(2n+1)').addClass('c3');  //홀수 1,2,3,4,5..  아래 토글 적용 위해서 클래스 하나 주석
+		
+		// toggleClass()-> 클래스가 있으면 지우고, 없으면 추가 ==> 이렇게 2가지가 왔다갔다하는걸 토글이라고 부름.. 
+		$("img").toggleClass("c2");
+		
+		// hasClass() -> 클래스가 있는지 없는지의 유무(true, false)를 구한다.
+		
+		//첫번째 이미지의 클래스 존재유무를 구한다.(treu, false)
+		var cState = $("img:first").hasClass('c2');
+		$("#username").attr("value",cState);
+		
+		$("#intro").val($("img").eq(0).hasClass('c3'));
+		
+		// 앞으로 html(), text(), val(), attr(), prop() 를 주로 사용하게된다. 기억하기.
+	});
+</script>	
+</head>
+<body>
+<div>
+	이름 : <input type="text" name="username" id="username"/><br/>
+	연락처 : <input type="text" name="tel" id="tel"/><br/>
+	<textarea id="intro"></textarea>
+</div>
+<div class="c1 c2 c3 c4"></div>
+<img src="../img/1.gif"/>
+<img src="../img/2.png"/>
+<img src="../img/flower.png"/>
+<img src="../img/K6.jpg"/>
+
+</body>
+</html>

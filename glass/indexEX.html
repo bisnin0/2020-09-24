@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<script>
+	var tag= ""; //<-- jquery 밖에서 변수를 선언해도 상관없다.(자바스크립트에서 선언)
+	$(function(){
+		tag = "<div></div><div></div>";
+		tag += "<img src='img/title_layer.gif'/>";
+		for(i=1; i<=3; i++){
+			tag  += "<img src='img/glass"+i+".gif'/>";
+		}
+		$('body').html(tag);
+		
+		$('body').css("margin","0");
+		$('div:first').css("height","40px").css("background-color",'#ef899a');//pink 	$('div').eq(0) 특정인덱스	,	$('div:nth-of-type(0)') div중 몇번째
+		$('div').eq(1).css({height:"22px",	backgroundColor:"rgb(84,174,200)"});//blue   JSON => 변수:"데이터" background-color => JOSN은 backgroucColor로 변경해야함 
+		$('img').css("position","absolute");
+		$('img:first').css("top","0");
+		$('img').eq(1).css({top:"63px",left:"300px"});
+		$('img').eq(2).css({top:"90px",left:"500px"});  //더블 따옴표보다 웹에서는 싱글따옴표를많이 쓴다.기억하고있을것.
+		$('img').eq(3).css({top:"150px",left:"380px"});
+	});
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
